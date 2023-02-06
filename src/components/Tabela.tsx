@@ -8,9 +8,9 @@ export default function Tabela({ clientes }: TabelaProps) {
     function renderizarCabecalho() {
         return (
             <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th>Idade</th>
+                <th className='text-left p-4'>Código</th>
+                <th className='text-left p-4'>Nome</th>
+                <th className='text-left p-4'>Idade</th>
             </tr>
         );
     }
@@ -18,16 +18,19 @@ export default function Tabela({ clientes }: TabelaProps) {
     function renderizarDados() {
         return clientes?.map((cliente, i) => {
             return (
-                <tr key={cliente.id}>
-                    <td>
+                <tr
+                    className={`${i % 2 === 0 ? 'bg-purple-200' : 'bg-purple-100'}`}
+                    key={cliente.id}
+                >
+                    <td className='text-left p-4'>
                         {cliente.id}
                     </td>
 
-                    <td>
+                    <td className='text-left p-4'>
                         {cliente.nome}
                     </td>
 
-                    <td>
+                    <td className='text-left p-4'>
                         {cliente.idade}
                     </td>
                 </tr>
@@ -36,8 +39,8 @@ export default function Tabela({ clientes }: TabelaProps) {
     }
 
     return (
-        <table>
-            <thead>
+        <table className='w-full rounded-xl overflow-hidden'>
+            <thead className='text-gray-100 bg-gradient-to-r from-purple-500 to-purple-800'>
                 {renderizarCabecalho()}
             </thead>
 

@@ -8,6 +8,7 @@ export default function Home() {
     new Cliente('Ana', 34, '1'),
     new Cliente('Bia', 45, '2'),
     new Cliente('Carlos', 23, '3'),
+    new Cliente('Pedro', 54, '4'),
   ];
 
   return (

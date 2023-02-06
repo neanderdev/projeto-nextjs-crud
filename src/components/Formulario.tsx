@@ -7,9 +7,11 @@ import Cliente from '../core/Cliente';
 
 interface FormularioProps {
     cliente: Cliente;
+    clienteMudou: (cliente: Cliente) => void;
+    cancelado: () => void;
 }
 
-export default function Formulario({ cliente }: FormularioProps) {
+export default function Formulario({ cliente, clienteMudou, cancelado }: FormularioProps) {
     const id = cliente?.id;
 
     const [nome, setNome] = useState(cliente?.nome ?? '');
@@ -45,7 +47,11 @@ export default function Formulario({ cliente }: FormularioProps) {
             />
 
             <div className='mt-3 flex justify-end'>
-                <Botao cor='blue' className='mr-2'>
+                <Botao
+                    cor='blue'
+                    className='mr-2'
+                    onClick={() => clienteMudou(new Cliente(nome, Number(idade), id))}
+                >
                     {
                         id
                             ? 'Alterar'
@@ -53,7 +59,10 @@ export default function Formulario({ cliente }: FormularioProps) {
                     }
                 </Botao>
 
-                <Botao cor='gray'>
+                <Botao
+                    cor='gray'
+                    onClick={cancelado}
+                >
                     Cancelar
                 </Botao>
             </div>
